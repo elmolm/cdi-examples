@@ -11,7 +11,12 @@ public class Main {
 	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] args) {
-				
+		bootstrapContainer1();
+
+		bootstrapContainer2();
+	}
+
+	public static void bootstrapContainer1() {
 		try (SeContainer cdiContainer = SeContainerInitializer.newInstance().initialize()) {
 
 			logger.info("Get Application 2 times, to show, that it's a real singleton");
@@ -32,12 +37,31 @@ public class Main {
 			myBean2.doSomeStuff();
 
 		}
-		
-		SeContainerInitializer initializer = SeContainerInitializer.newInstance();
-		SeContainer container = initializer.initialize();
-		
-		container.close();
-		
+	}
 
+	public static void bootstrapContainer2() {
+		SeContainerInitializer initializer = SeContainerInitializer.newInstance();
+
+		try (SeContainer cdiContainer = initializer.disableDiscovery().addBeanClasses(Application.class)
+				.addBeanClasses(EventObserverBean.class).addBeanClasses(EventSourceBean.class).initialize()) {
+
+			logger.info("Get Application 2 times, to show, that it's a real singleton");
+			Application appl = cdiContainer.select(Application.class).get();
+			appl.execute();
+
+			Application appl2 = CDI.current().select(Application.class).get();
+			appl2.execute();
+
+			/**
+			 * Get non singleton bean MyBean 2 times, to show, that they are different
+			 * objects.
+			 */
+			EventSourceBean myBean1 = cdiContainer.select(EventSourceBean.class).get();
+			myBean1.doSomeStuff();
+
+			EventSourceBean myBean2 = cdiContainer.select(EventSourceBean.class).get();
+			myBean2.doSomeStuff();
+
+		}
 	}
 }
