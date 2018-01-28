@@ -7,6 +7,9 @@ repositories {
 
 mainClassName = "blog.elmland.cdiexamples.cdi2.bootapi.Main"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
     compile 'javax.enterprise:cdi-api:2.0'
     runtime 'org.jboss.weld.se:weld-se-shaded:3.0.1.Final'
