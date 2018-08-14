@@ -1,9 +1,15 @@
-apply plugin: 'eclipse'
-apply plugin: 'application'
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+}
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
+
+apply plugin: 'eclipse'
+apply plugin: 'application'
 
 mainClassName = "blog.elmland.cdiexamples.cdi2.bootapi.Main"
 
@@ -12,12 +18,13 @@ targetCompatibility = 1.8
 
 dependencies {
     compile 'javax.enterprise:cdi-api:2.0'
-    runtime 'org.jboss.weld.se:weld-se-shaded:3.0.1.Final'
-
     compile 'org.slf4j:slf4j-api:1.7.25'
     compile 'org.slf4j:slf4j-simple:1.7.25'
+	runtime 'org.jboss.weld.se:weld-se-shaded:3.0.5.Final'
 
-    testCompile 'junit:junit:4.12'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5+'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5+'
+    testRuntime 'org.junit.platform:junit-platform-launcher:1+'
 }
 
 task copyResources(type: Copy) {
