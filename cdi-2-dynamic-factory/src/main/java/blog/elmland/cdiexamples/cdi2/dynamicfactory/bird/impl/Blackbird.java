@@ -35,9 +35,8 @@ public class Blackbird implements Bird {
 	@Inject
 	private Logger logger;
 
-    @Override
-    public void tweet() {
-        logger.info("Tweet, Tweet, I'm a blackbird!");
-    }
-
+	@Override
+	public void tweet() {
+		logger.info("Tweet, Tweet, I'm a blackbird!");
+	}
 }

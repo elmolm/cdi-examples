@@ -35,9 +35,9 @@ public class Sparrow implements Bird {
 	@Inject
 	private Logger logger;
 
-    @Override
-    public void tweet() {
-        logger.info("Tweet, Tweet, I'm a sparrow!");
-    }
+	@Override
+	public void tweet() {
+		logger.info("Tweet, Tweet, I'm a sparrow!");
+	}
 
 }

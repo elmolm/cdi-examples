@@ -39,5 +39,4 @@ public class Eagle implements Bird {
 	public void tweet() {
 		logger.info("Tweet, Tweet, I'm an eagle!");
 	}
-
 }

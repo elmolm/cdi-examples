@@ -31,17 +31,17 @@ import javax.inject.Inject;
 @ApplicationScoped
 public class BirdFactory {
 
-    @Inject
-    @Any
-    private Instance<Bird> birdInstance;
+	@Inject
+	@Any
+	private Instance<Bird> birdInstance;
 
-    public Bird createBird(String _birdType) {
-        Instance<Bird> instance = this.birdInstance.select(new BirdTypeNameLiteral(_birdType));
+	public Bird createBird(String _birdType) {
+		Instance<Bird> instance = this.birdInstance.select(new BirdTypeNameLiteral(_birdType));
 
-        if (!instance.isResolvable()) {
-            throw new IllegalArgumentException("bird type " + _birdType + " not supported");
-        }
+		if (!instance.isResolvable()) {
+			throw new IllegalArgumentException("bird type " + _birdType + " not supported");
+		}
 
-        return instance.get();
-    }
+		return instance.get();
+	}
 }
