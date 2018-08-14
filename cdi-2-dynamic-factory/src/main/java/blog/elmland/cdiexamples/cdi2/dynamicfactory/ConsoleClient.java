@@ -47,6 +47,10 @@ public class ConsoleClient {
 			while (scanner.hasNextLine()) {
 				String birdType = scanner.nextLine();
 
+				if (birdType.equalsIgnoreCase("q")) {
+					break;
+				}
+
 				Bird bird = birdFactory.createBird(birdType);
 				bird.tweet();
 			}

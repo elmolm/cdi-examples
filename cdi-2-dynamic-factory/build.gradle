@@ -1,8 +1,10 @@
-apply plugin: 'eclipse'
-apply plugin: 'application'
+plugins {
+	id 'application'
+	id 'eclipse'
+}
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 sourceCompatibility = 1.8
@@ -12,7 +14,7 @@ mainClassName = "blog.elmland.cdiexamples.cdi2.dynamicfactory.Main"
 
 dependencies {
     compile 'javax.enterprise:cdi-api:2.0'
-    runtime 'org.jboss.weld.se:weld-se-shaded:3.0.1.Final'
+    compile 'org.jboss.weld.se:weld-se-shaded:3.0.5.Final'
 
     compile 'org.slf4j:slf4j-api:1.7.25'
     compile 'org.slf4j:slf4j-simple:1.7.25'

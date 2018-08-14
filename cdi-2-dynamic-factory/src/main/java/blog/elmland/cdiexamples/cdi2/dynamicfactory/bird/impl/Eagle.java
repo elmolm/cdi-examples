@@ -21,20 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *******************************************************************************/
-package blog.elmland.cdiexamples.cdi2.dynamicfactory.bird;
+package blog.elmland.cdiexamples.cdi2.dynamicfactory.bird.impl;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 
-@BirdType("S")
-public class Sparrow implements Bird {
+import blog.elmland.cdiexamples.cdi2.dynamicfactory.bird.Bird;
+import blog.elmland.cdiexamples.cdi2.dynamicfactory.bird.BirdType;
+
+@BirdType("E")
+public class Eagle implements Bird {
 	@Inject
 	private Logger logger;
 
-    @Override
-    public void tweet() {
-        logger.info("Tweet, Tweet, I'm a sparrow!");
-    }
+	@Override
+	public void tweet() {
+		logger.info("Tweet, Tweet, I'm an eagle!");
+	}
 
 }

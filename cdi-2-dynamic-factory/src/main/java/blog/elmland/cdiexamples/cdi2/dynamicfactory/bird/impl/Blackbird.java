@@ -21,11 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *******************************************************************************/
-package blog.elmland.cdiexamples.cdi2.dynamicfactory.bird;
+package blog.elmland.cdiexamples.cdi2.dynamicfactory.bird.impl;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
+
+import blog.elmland.cdiexamples.cdi2.dynamicfactory.bird.Bird;
+import blog.elmland.cdiexamples.cdi2.dynamicfactory.bird.BirdType;
 
 @BirdType("B")
 public class Blackbird implements Bird {
