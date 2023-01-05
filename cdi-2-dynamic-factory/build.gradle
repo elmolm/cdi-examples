@@ -1,25 +1,28 @@
 plugins {
-	id 'application'
-	id 'eclipse'
+    id 'application'
+    id 'idea'
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+application {
+    mainClass = 'blog.elmland.cdiexamples.cdi2.dynamicfactory.Main'
 
-mainClassName = "blog.elmland.cdiexamples.cdi2.dynamicfactory.Main"
+    sourceCompatibility = 17
+    targetCompatibility = 17
+}
 
 dependencies {
-    compile 'javax.enterprise:cdi-api:2.0'
-    compile 'org.jboss.weld.se:weld-se-shaded:3.0.5.Final'
+    implementation 'jakarta.enterprise:jakarta.enterprise.cdi-api:2.0.2'
+    implementation 'org.slf4j:slf4j-api:2.0.4'
+    implementation 'org.slf4j:slf4j-simple:2.0.4'
+    runtimeOnly 'org.jboss.weld.se:weld-se-shaded:3.1.9.Final'
 
-    compile 'org.slf4j:slf4j-api:1.7.25'
-    compile 'org.slf4j:slf4j-simple:1.7.25'
-
-    testCompile 'junit:junit:4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5+'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5+'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1+'
 }
 
 task copyResources(type: Copy) {
